@@ -15,15 +15,6 @@ class User extends Authenticatable
         return $this->belongsTo(UserRole::class);
     }
 
-    public function assignRole(string $roleName)
-    {
-        $role = \App\Models\UserRole::where('role_name', $roleName)->first();
-        if ($role) {
-            $this->role_id = $role->id;
-            $this->save();
-        }
-    }
-
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
