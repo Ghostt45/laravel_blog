@@ -60,6 +60,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    @if (in_array(Auth::user()->role->role_name, ['admin', 'superAdmin']))
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">APanel</a>
+                                    @endif
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
